@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TeamInviteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/teams/create', [TeamController::class, 'create'])->name('teams.create');
     Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
     Route::get('/teams/{team}', [TeamController::class, 'show'])->name('teams.show');
+
+    Route::get('/teams/{team}/invites/create', [TeamInviteController::class, 'create'])->name('team-invites.create');
+    Route::post('/teams/{team}/invites', [TeamInviteController::class, 'store'])->name('team-invites.store');
 });
+
+Route::get('/invites/{token}/accept', [TeamInviteController::class, 'accept'])->name('team-invites.accept');
 
 require __DIR__.'/auth.php';

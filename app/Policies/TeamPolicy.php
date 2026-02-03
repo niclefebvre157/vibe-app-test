@@ -11,4 +11,12 @@ class TeamPolicy
     {
         return $team->members()->where('user_id', $user->id)->exists();
     }
+
+    public function invite(User $user, Team $team): bool
+    {
+        return $team->memberships()
+            ->where('user_id', $user->id)
+            ->where('role', 'admin')
+            ->exists();
+    }
 }

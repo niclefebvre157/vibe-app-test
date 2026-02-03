@@ -53,5 +53,10 @@
 - Prefer plural resource names (/teams, /games).
 - Avoid clever abstractions early. Optimize for clarity.
 
+## Mail (Local Dev)
+- Local development uses Mailpit via Docker Desktop.
+- Mailpit runs on 127.0.0.1:1025 with UI at http://localhost:8025.
+- Do not assume mail infrastructure exists unless Mailpit is running.
+
 
 
